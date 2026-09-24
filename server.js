@@ -19,6 +19,8 @@ app.get('/api/health', (req, res) => {
     });
 });
 
+app.use('/api/users', require('./routes/user.route.js'));
+
 const PORT = process.env.PORT || 8000;
 
 connectDB()

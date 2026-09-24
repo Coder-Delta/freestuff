@@ -1,13 +1,27 @@
 const userModel = require('../models/User.model');
 
-export const getAllUsers = (req, res) => {
+const User = userModel;
+
+export const getAllUsers = async (req, res) => {
   // Logic to retrieve all users from the database
-  res.json({ message: 'Get all users' });
+  try {
+    const users = await User.findAll();
+  } catch (error) {
+    res.json({ message: 'Get all users' });
+  }
 }
 
 export const createUser = (req, res) => {
+    try {
+        User.create({
+            name: req.body.name,
+            email: req.body.email,
+            role: req.body.role || 'user',
+        });
+    } catch (error) {
+            res.json({ message: 'Create a new user' });
+    }
     // Logic to create a new user in the database  
-    res.json({ message: 'Create a new user' });
 }
 export const getUserById = (req, res) => {
     const { id } = req.params;  
