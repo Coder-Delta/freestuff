@@ -1,6 +1,4 @@
-const userModel = require('../models/User.model');
-
-const User = userModel;
+import User from '../models/User.model.js';
 
 export const getAllUsers = async (req, res) => {
   // Logic to retrieve all users from the database

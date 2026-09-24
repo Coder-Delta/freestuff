@@ -1,8 +1,8 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const connectDB = require('./config/db.mongo.js');
-
-require('dotenv').config();
+import express from 'express';
+import mongoose from 'mongoose';
+import connectDB from './config/db.mongo.js';
+import userRoutes from './routes/user.route.js';
+import 'dotenv/config';
 
 const app = express();
 
@@ -19,7 +19,7 @@ app.get('/api/health', (req, res) => {
     });
 });
 
-app.use('/api/users', require('./routes/user.route.js'));
+app.use('/api/users', userRoutes);
 
 const PORT = process.env.PORT || 8000;
 
