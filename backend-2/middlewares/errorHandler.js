@@ -1,15 +1,15 @@
 const errorHandler = (err, req, res, next) => {
-    console.error('[error] ${err.stack || err.message}');
+    console.error(`[error] ${err.stack || err.message}`);
 
 
 
     //Mongoose validation error
     if (err.name === 'ValidationError') {
-        const massages = Object.values(err.errors).map((val) => val.message);
+        const messages = Object.values(err.errors).map((val) => val.message);
         return res.status(400).json({
             success: false,
             error: 'Validation Error',
-            details: massages,
+            details: messages,
         });
     }
 
